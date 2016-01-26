@@ -1,0 +1,26 @@
+﻿@model TaskListApp.Models.TaskList
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>TaskList</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TaskListName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TaskListName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.TaskListID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

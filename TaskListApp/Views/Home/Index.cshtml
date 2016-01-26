@@ -1,0 +1,22 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>Task List Application</h1>
+    <p class="lead"> Create Tasklists with individual Tasks.  </p>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>@Html.ActionLink("Tasklists", "Index", "Tasklists") </h2>
+        <p> Create and edit Tasklists        </p>
+        
+    </div>
+    <div class="col-md-4">
+        <h2>@Html.ActionLink("Tasks", "Index", "Tasks") </h2>
+        <p> Create and edit Tasklists        </p>
+ 
+    </div>
+     
+</div>

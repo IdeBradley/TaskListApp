@@ -1,0 +1,78 @@
+﻿
+@model TaskListApp.ViewModels.TaskListIndexData
+ @{
+    ViewBag.Title = "TaskList Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>Task List Name</th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.TaskLists)
+    {
+        string selectedRow = "";
+        if (item.TaskListID == ViewBag.TaskListID)
+        {
+            selectedRow = "success";
+        }
+        <tr class="@selectedRow">
+            <td>
+                @Html.DisplayFor(modelItem => item.TaskListID)
+            </td>
+
+                        <td>
+                            @Html.ActionLink("Select", "Index", new { id = item.TaskListID }) |
+                            @Html.ActionLink("Edit", "Edit", new { id = item.TaskListID }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.TaskListID }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.TaskListID })
+                        </td>
+                    </tr>
+                }
+
+
+
+            </table>
+@if (Model.TaskLists != null)
+{
+    <h3>Tasks in Selected TaskList</h3>
+    <table class="table">
+        <tr>
+            <th></th>
+            <th>Task Name</th>
+            <th>Start Date</th>
+            <th>Finish Date</th>
+        </tr>
+
+        @foreach (var item in Model.Tasks)
+        {
+            string selectedRow = "";
+            if (item.TaskListID == ViewBag.TaskListID)
+            {
+                selectedRow = "success";
+            }
+            <tr class="@selectedRow">
+                <td>
+                    @Html.ActionLink("Select", "Index", new { TaskID = item.TaskID })
+                </td> 
+                <td>
+                    @item.TaskName
+                </td>
+                <td>
+                    @item.StartDate
+                </td>
+                <td>
+                    @item.EndDate
+
+                </td>
+            </tr>
+        }
+
+    </table>
+}
