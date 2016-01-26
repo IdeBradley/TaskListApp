@@ -1,14 +1,16 @@
 ﻿
 @model TaskListApp.ViewModels.TaskListIndexData
- @{
+
+@{
     ViewBag.Title = "TaskList Index";
 }
 
-<h2>Index</h2>
+<h2>TaskList Overview</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+
 <table class="table">
     <tr>
         <th>Task List Name</th>
@@ -24,55 +26,52 @@
         }
         <tr class="@selectedRow">
             <td>
-                @Html.DisplayFor(modelItem => item.TaskListID)
+                @Html.DisplayFor(modelItem => item.TaskListName)
             </td>
-
-                        <td>
-                            @Html.ActionLink("Select", "Index", new { id = item.TaskListID }) |
-                            @Html.ActionLink("Edit", "Edit", new { id = item.TaskListID }) |
-                            @Html.ActionLink("Details", "Details", new { id = item.TaskListID }) |
-                            @Html.ActionLink("Delete", "Delete", new { id = item.TaskListID })
-                        </td>
-                    </tr>
-                }
-
-
-
-            </table>
-@if (Model.TaskLists != null)
-{
-    <h3>Tasks in Selected TaskList</h3>
-    <table class="table">
-        <tr>
-            <th></th>
-            <th>Task Name</th>
-            <th>Start Date</th>
-            <th>Finish Date</th>
+            <td>
+                @Html.ActionLink("Select", "Index", new { id = item.TaskListID }) |
+                @Html.ActionLink("Edit", "Edit", new { id = item.TaskListID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.TaskListID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.TaskListID })
+            </td>
         </tr>
+    }
+</table>
+@*// IB this section is  not accessing the right task list. yet, *@ 
+ @*if (Model.Tasks != null)
+    {
+<h3>Tasks in Selected TaskList</h3>
+<table class="table">
+    <tr>
+        <th></th>
+        <th>Task Name</th>
+        <th>Start Date</th>
+        <th>Finish Date</th>
+    </tr>
 
-        @foreach (var item in Model.Tasks)
-        {
-            string selectedRow = "";
-            if (item.TaskListID == ViewBag.TaskListID)
+    @foreach (var item in Model.Tasks)
             {
-                selectedRow = "success";
-            }
-            <tr class="@selectedRow">
-                <td>
-                    @Html.ActionLink("Select", "Index", new { TaskID = item.TaskID })
-                </td> 
-                <td>
-                    @item.TaskName
-                </td>
-                <td>
-                    @item.StartDate
-                </td>
-                <td>
-                    @item.EndDate
+                string selectedRow = "";
+                if (item.TaskListID == ViewBag.TaskListID)
+                {
+                    selectedRow = "success";
+                }
+                <tr class="@selectedRow">
+                    <td>
+                        @Html.ActionLink("Select", "Index", new { TaskID = item.TaskID })
+                    </td>
+                    <td>
+                        @item.TaskName
+                    </td>
+                    <td>
+                        @item.StartDate
+                    </td>
+                    <td>
+                        @item.EndDate
 
-                </td>
-            </tr>
-        }
+                    </td>
+                </tr>
+    }
 
-    </table>
+</table>*@
 }

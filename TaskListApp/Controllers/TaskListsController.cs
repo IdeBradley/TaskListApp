@@ -21,12 +21,12 @@ namespace TaskListApp.Controllers
         {
             var viewModel = new TaskListIndexData();
             viewModel.TaskLists = db.TaskLists
-                .Include(i => i.Tasks.Select(c => c.TaskName))
+                .Include(i => i.Tasks.Select(c=> c.TaskName))
                 .OrderBy(i => i.TaskListName);
 
             if (id != null)
             {
-                ViewBag.TasklistID = id.Value;
+                ViewBag.TaskListID = id.Value;
                 viewModel.Tasks = viewModel.TaskLists.Where(
                     i => i.TaskListID == id.Value).Single().Tasks;
                
